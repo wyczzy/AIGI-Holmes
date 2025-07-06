@@ -6,7 +6,7 @@ A comprehensive AIGC (AI-Generated Content) detection framework with unified con
 
 - **🔧 Unified Configuration**: All parameters managed through YAML configuration files
 - **🚀 Complete Pipeline**: Training → HuggingFace Conversion → LLaVA Integration
-- **🎯 Multiple Training Modes**: NPR, LoRA, CNNDetection, and rine
+- **🎯 Multiple Training Modes**: NPR, CLIP+LoRA, CNNDetection, and rine
 - **🔄 Modular Design**: Run components independently or as complete pipeline
 - **📊 Comprehensive Testing**: Multi-dataset evaluation with detailed metrics
 - **🛠️ Easy Setup**: Quick start script and example configurations
