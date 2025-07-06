@@ -83,6 +83,7 @@ pip install -r cuda.txt
 - [ ] Detailed dataset preparation instructions
 - [ ] Pre-trained model weights and download links
 - [ ] Demo link and usage instructions
+- [ ] Supplement the Acknowledgments section
 
 ## 🧰 Usage <a name="usage"></a> 
 
