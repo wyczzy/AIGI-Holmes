@@ -1,0 +1,125 @@
+# AIGC Detection Configuration File
+# This file contains all the paths and parameters for training and testing
+
+# Data paths
+data:
+  # Training data directory
+  train_dataroot: "/path/to/dataset0215"
+  # Test data directory  
+  test_dataroot: "/path/to/autogressive_data/TestSet"
+  # Training split name
+  train_split: "train"
+  # Validation split name
+  val_split: "val"
+  # Additional test datasets
+  test_datasets:
+    - name: "Chameleon"
+      path: "/path/to/Chameleon"
+      multiclass: false
+    - name: "LOKI"
+      path: "/path/to/LOKI"
+      multiclass: false
+
+# Model checkpoints and output paths
+models:
+  # Directory to save checkpoints
+  checkpoints_dir: "./checkpoints_new"
+  # Pre-trained model paths
+  pretrained:
+    # CLIP model path
+    clip_model: "/path/to/clip-vit-large-patch14-336"
+    # LLaVA model path
+    llava_model: "/path/to/llava-v1.6-mistral-7b-hf"
+  # Output paths
+  output:
+    # HuggingFace model output directory
+    hf_model_output: "./output/hf_models"
+    # Visual encoder output directory
+    visual_encoder_output: "./output/visual_encoder"
+    # Final LLaVA model output directory
+    llava_output: "./output/llava_modified"
+
+# Training parameters
+training:
+  # Model architecture
+  arch: "res50"
+  # Training mode (options: "NPR", "lora", "CNNDetection", "rine")
+  trainmode: "lora"
+  # Model name for CLIP training
+  modelname: "CLIP:ViT-L/14@336px"
+  # Learning rate
+  lr: 0.0001
+  # Batch size
+  batch_size: 16
+  # Number of epochs
+  niter: 1000
+  # Learning rate decay frequency
+  delr_freq: 20
+  # Loss display frequency
+  loss_freq: 400
+  # Data augmentation
+  data_aug: true
+  # Image load size
+  loadSize: 384
+  # Image crop size
+  cropSize: 336
+  # Random seed
+  seed: 100
+  # GPU IDs (comma-separated)
+  gpu_ids: "0"
+  # Experiment name
+  name: "AIGC_Detection"
+
+# Testing parameters
+testing:
+  # Test datasets configuration
+  test_vals:
+    - "Show-o"
+    - "Janus-Pro-7B"
+    - "LlamaGen"
+    - "Infinity"
+    - "Janus"
+    - "VAR"
+    - "FLUX"
+    - "PixArt-XL"
+    - "SD35-L"
+    - "Janus-Pro-1B"
+  # Multiclass flags for each test dataset
+  multiclass: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  # Batch size for testing
+  batch_size: 64
+  # Test image processing
+  no_resize: false
+  no_crop: false
+  # Noise parameters
+  noise_type: "resize"
+  noise_ratio: 2
+
+# Visual pretraining specific parameters
+visual_pretraining:
+  # Enable visual pretraining
+  enabled: true
+  # Pre-trained checkpoint to load
+  checkpoint_path: "./checkpoints_new/CLIP:ViT-L/14@336px/model_epoch_0.99_1.00.pth"
+  # Enable automatic conversion to HuggingFace format
+  auto_convert_to_hf: true
+  # Enable automatic vision model replacement in LLaVA
+  auto_replace_llava_vision: true
+
+# Logging and monitoring
+logging:
+  # Enable tensorboard logging
+  tensorboard: true
+  # Log file name
+  log_file: "training.log"
+  # Print options at start
+  print_options: true
+
+# System parameters
+system:
+  # Number of threads for data loading
+  num_threads: 8
+  # CUDA deterministic mode
+  deterministic: true
+  # Random seed for reproducibility
+  random_seed: 100 

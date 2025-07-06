@@ -1,0 +1,40 @@
+# Requirements for AIGC Detection with Configuration System
+# Core dependencies
+torch>=1.11.0
+torchvision>=0.12.0
+numpy>=1.21.0
+Pillow>=8.3.0
+
+# Machine learning and deep learning
+transformers>=4.20.0
+accelerate>=0.20.0
+
+# Data processing
+opencv-python>=4.5.0
+scikit-learn>=1.0.0
+pandas>=1.3.0
+
+# Visualization and logging
+tensorboardX>=2.4
+matplotlib>=3.5.0
+seaborn>=0.11.0
+
+# Configuration and utilities
+PyYAML>=6.0
+argparse
+pathlib
+typing
+
+# Additional utilities
+tqdm>=4.62.0
+requests>=2.25.0
+urllib3>=1.26.0
+
+# Optional: For better performance
+einops>=0.4.0
+timm>=0.6.0
+
+# Development and testing (optional)
+pytest>=6.0.0
+flake8>=4.0.0
+black>=22.0.0 

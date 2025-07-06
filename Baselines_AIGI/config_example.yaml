@@ -1,0 +1,133 @@
+# AIGC Detection Configuration Example
+# Copy this file to my_config.yaml and modify the paths according to your setup
+
+# Data paths - MODIFY THESE TO MATCH YOUR SETUP
+data:
+  # Training data directory - should contain train/ subdirectory
+  train_dataroot: "/path/to/your/dataset0215"
+  # Test data directory - should contain test datasets like Show-o/, Janus/, etc.
+  test_dataroot: "/path/to/your/test_datasets"
+  # Training split name (subdirectory under train_dataroot)
+  train_split: "train"
+  # Validation split name
+  val_split: "val"
+  # Additional test datasets (optional)
+  test_datasets:
+    - name: "Chameleon"
+      path: "/path/to/your/Chameleon_dataset"
+      multiclass: false
+    - name: "LOKI"
+      path: "/path/to/your/LOKI_dataset"
+      multiclass: false
+
+# Model checkpoints and output paths - MODIFY THESE
+models:
+  # Directory to save training checkpoints
+  checkpoints_dir: "./checkpoints_new"
+  # Pre-trained model paths - DOWNLOAD AND SET THESE
+  pretrained:
+    # Download from: https://huggingface.co/openai/clip-vit-large-patch14-336
+    clip_model: "/path/to/your/clip-vit-large-patch14-336"
+    # Download from: https://huggingface.co/llava-hf/llava-v1.6-mistral-7b-hf
+    llava_model: "/path/to/your/llava-v1.6-mistral-7b-hf"
+  # Output paths - these will be created automatically
+  output:
+    # HuggingFace model output directory
+    hf_model_output: "./output/hf_models"
+    # Visual encoder output directory
+    visual_encoder_output: "./output/visual_encoder"
+    # Final LLaVA model output directory
+    llava_output: "./output/llava_modified"
+
+# Training parameters - ADJUST BASED ON YOUR HARDWARE
+training:
+  # Model architecture
+  arch: "res50"
+  # Training mode: "NPR", "lora", "CNNDetection", or "rine"
+  trainmode: "lora"
+  # Model name for CLIP training
+  modelname: "CLIP:ViT-L/14@336px"
+  # Learning rate - adjust based on your data and model
+  lr: 0.0001
+  # Batch size - reduce if you have limited GPU memory
+  batch_size: 16
+  # Number of training epochs
+  niter: 1000
+  # Learning rate decay frequency (in epochs)
+  delr_freq: 20
+  # Loss display frequency (in steps)
+  loss_freq: 400
+  # Enable data augmentation
+  data_aug: true
+  # Image load size
+  loadSize: 384
+  # Image crop size
+  cropSize: 336
+  # Random seed for reproducibility
+  seed: 100
+  # GPU IDs (comma-separated, e.g., "0,1,2,3")
+  gpu_ids: "0"
+  # Experiment name
+  name: "AIGC_Detection"
+
+# Testing parameters
+testing:
+  # Test datasets configuration - these should match your test_dataroot structure
+  test_vals:
+    - "Show-o"
+    - "Janus-Pro-7B"
+    - "LlamaGen"
+    - "Infinity"
+    - "Janus"
+    - "VAR"
+    - "FLUX"
+    - "PixArt-XL"
+    - "SD35-L"
+    - "Janus-Pro-1B"
+  # Multiclass flags for each test dataset (0 = binary, 1 = multiclass)
+  multiclass: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  # Batch size for testing - can be larger than training batch size
+  batch_size: 64
+  # Test image processing
+  no_resize: false
+  no_crop: false
+  # Noise parameters (optional)
+  noise_type: "resize"
+  noise_ratio: 2
+
+# Visual pretraining specific parameters
+visual_pretraining:
+  # Enable visual pretraining
+  enabled: true
+  # Pre-trained checkpoint to load (set after first training)
+  checkpoint_path: "./checkpoints_new/CLIP:ViT-L/14@336px/model_epoch_0.99_1.00.pth"
+  # Enable automatic conversion to HuggingFace format after training
+  auto_convert_to_hf: true
+  # Enable automatic vision model replacement in LLaVA after conversion
+  auto_replace_llava_vision: true
+
+# Logging and monitoring
+logging:
+  # Enable tensorboard logging
+  tensorboard: true
+  # Log file name
+  log_file: "training.log"
+  # Print options at start
+  print_options: true
+
+# System parameters
+system:
+  # Number of threads for data loading
+  num_threads: 8
+  # CUDA deterministic mode for reproducibility
+  deterministic: true
+  # Random seed for reproducibility
+  random_seed: 100
+
+# Quick setup guide:
+# 1. Set data.train_dataroot to your training data path
+# 2. Set data.test_dataroot to your test data path
+# 3. Download and set models.pretrained.clip_model path
+# 4. Download and set models.pretrained.llava_model path
+# 5. Adjust training.batch_size based on your GPU memory
+# 6. Run: python train_with_config.py --config my_config.yaml 

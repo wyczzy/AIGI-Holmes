@@ -1,0 +1,9 @@
+scipy
+scikit-learn
+numpy
+opencv_python
+Pillow
+torch>=1.2.0
+torchvision
+git+https://github.com/openai/CLIP.git
+git+https://github.com/Baijiong-Lin/LoRA-Torch
