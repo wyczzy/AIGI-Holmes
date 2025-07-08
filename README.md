@@ -3,7 +3,7 @@
 <h3>AIGI-Holmes: Towards Explainable and Generalizable AI-Generated Image Detection via Multimodal Large Language Models</h3>
 
 Ziyin Zhou<sup>1*</sup>, Yunpeng Luo<sup>2*</sup>, Yuanchen Wu<sup>2</sup>, Ke Sun<sup>1</sup>, Jiayi Ji<sup>1</sup>,  
-Ke Yan<sup>2</sup>, Shouhong Ding<sup>2</sup>, Xiaoshuai Sun<sup>1†</sup>, Yunsheng Wu<sup>2</sup>, Rongrong Ji<sup>1</sup>  
+Ke Yan<sup>2†</sup>, Shouhong Ding<sup>2</sup>, Xiaoshuai Sun<sup>1†</sup>, Yunsheng Wu<sup>2</sup>, Rongrong Ji<sup>1</sup>  
 <sup>1</sup>Key Laboratory of Multimedia Trusted Perception and Efficient Computing, Ministry of Education of China, Xiamen University  
 <sup>2</sup>Tencent YouTu Lab  
 
