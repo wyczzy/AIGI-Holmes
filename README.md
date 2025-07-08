@@ -21,9 +21,6 @@ Ke Yan<sup>2†</sup>, Shouhong Ding<sup>2</sup>, Xiaoshuai Sun<sup>1†</sup>, 
     <img src="asset/teasor.png" width="100%" height="100%"/>
 </div><br/>
 
-<div align="center">
-    <img src="asset/datapipeline.png" width="100%" height="100%"/>
-</div><br/>
 
 ## 📋 Table of Contents
 1. [⚒️ Installation](#installation)
