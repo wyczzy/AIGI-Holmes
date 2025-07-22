@@ -205,3 +205,5 @@ Baselines_AIGI/ViT-L-14-336px.pt
 Baselines_AIGI/Untitled.ipynb
 Baselines_AIGI/NPR.png
 work_dirs/
+Baselines_AIGI/checkpoints_new
+Baselines_AIGI/my_config.yaml

@@ -162,8 +162,8 @@ class UnifiedTrainer:
             
         # Initial testing
         print("Initial model testing...")
-        self.model.eval()
-        self.test_model()
+        # self.model.eval()
+        # self.test_model()
         self.model.train()
         
         print(f"Current working directory: {os.getcwd()}")
