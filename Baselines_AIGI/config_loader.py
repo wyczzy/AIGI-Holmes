@@ -174,6 +174,42 @@ class ConfigLoader:
         namespace.classes = ""
         namespace.isTrain = True
         
+        # Add missing parameters from base_options.py
+        namespace.mode = self.get('training.mode', 'binary')
+        namespace.class_bal = self.get('training.class_bal', False)
+        namespace.serial_batches = self.get('training.serial_batches', False)
+        namespace.resize_or_crop = self.get('training.resize_or_crop', 'scale_and_crop')
+        namespace.no_flip = self.get('training.no_flip', False)
+        namespace.init_type = self.get('training.init_type', 'normal')
+        namespace.init_gain = self.get('training.init_gain', 0.02)
+        namespace.suffix = self.get('training.suffix', '')
+        namespace.epoch = self.get('training.epoch', 'latest')
+        
+        # Data augmentation parameters
+        namespace.rz_interp = self.get('training.rz_interp', 'bilinear')
+        namespace.blur_prob = self.get('training.blur_prob', 0.0)
+        namespace.blur_sig = self.get('training.blur_sig', '0.5')
+        namespace.jpg_prob = self.get('training.jpg_prob', 0.0)
+        namespace.jpg_method = self.get('training.jpg_method', 'cv2')
+        namespace.jpg_qual = self.get('training.jpg_qual', '75')
+        
+        # Testing parameters from test_options.py
+        namespace.model_path = self.get('testing.model_path', '')
+        namespace.no_resize = self.get('testing.no_resize', False)
+        namespace.no_crop = self.get('testing.no_crop', False)
+        namespace.eval = self.get('testing.eval', False)
+        namespace.earlystop_epoch = self.get('training.earlystop_epoch', 15)
+        
+        # Training parameters from train_options.py
+        namespace.optim = self.get('training.optim', 'adam')
+        namespace.new_optim = self.get('training.new_optim', False)
+        namespace.save_latest_freq = self.get('training.save_latest_freq', 2000)
+        namespace.save_epoch_freq = self.get('training.save_epoch_freq', 20)
+        namespace.continue_train = self.get('training.continue_train', False)
+        namespace.epoch_count = self.get('training.epoch_count', 1)
+        namespace.last_epoch = self.get('training.last_epoch', -1)
+        namespace.beta1 = self.get('training.beta1', 0.9)
+        
         # Add all flattened config items
         for k, v in flat_config.items():
             setattr(namespace, k, v)
